@@ -19,14 +19,20 @@ public class ParseInput {
 			
 			Terrain.num_grid_rows = Integer.parseInt(data_overview[0]);
 			Terrain.num_grid_cols = Integer.parseInt(data_overview[1]);
-			Terrain.drones = new ArrayList<Drone>(Integer.parseInt(data_overview[2]));
+			int D = Integer.parseInt(data_overview[2]);
+			Terrain.drones = new ArrayList<Drone>(D);
+
 			Terrain.max_turns = Integer.parseInt(data_overview[3]);
 			Terrain.max_load = Integer.parseInt(data_overview[4]);
 			
 			String line = in.readLine();
 			
 			P = Integer.parseInt(line);
-			
+
+			for(int j = 0; j<D; j++) {
+				Terrain.drones.add(j, new Drone(P));
+			}
+
 			data_overview = in.readLine().split(" ");
 			
 			for( int i = 0; i < P; ++i)
@@ -45,13 +51,14 @@ public class ParseInput {
 				int x = Integer.parseInt(data_overview[0]);
 				int y = Integer.parseInt(data_overview[1]);
 				
-				Warehouse warehouse = new Warehouse(x,y);
+				Warehouse warehouse = new Warehouse(x,y, P);
 				
 				data_overview = in.readLine().split(" ");
 				
 				for( int j = 0; j < P; ++j)
 				{
-					warehouse.products.add(Integer.parseInt(data_overview[j]));
+
+					warehouse.products[j] = Integer.parseInt(data_overview[j]);
 				}
 				
 				Terrain.warehouses.add(warehouse);
@@ -66,13 +73,13 @@ public class ParseInput {
 			{
 				data_overview = in.readLine().split(" ");
 				
-				Order order = new Order();
+				Order order = new Order(P);
 				
 				int x = Integer.parseInt(data_overview[0]);
 				int y = Integer.parseInt(data_overview[1]);
 				
-				order.x = x;
-				order.y = y;
+				order.pos.x = x;
+				order.pos.y = y;
 				
 				line = in.readLine();
 				
@@ -82,7 +89,7 @@ public class ParseInput {
 				
 				for( int j = 0; j < order.L; ++j)
 				{
-					order.products.add(Integer.parseInt(data_overview[j]));
+					order.products[j] = Integer.parseInt(data_overview[j]);
 				}
 				
 				Terrain.orders.add(order);

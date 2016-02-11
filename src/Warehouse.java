@@ -3,15 +3,15 @@ import java.util.HashMap;
 
 public class Warehouse {
 	
-	public Warehouse(int x, int y)
+	public Warehouse(int x, int y, int pt)
 	{
 		pos = new Position(x, y);
-		products = new HashMap<Integer, Item> ();
-		reservedProd = new HashMap<Integer, Item> ();
+		products = new int[pt];
+		reservedProd = new int[pt];
 	}
 	
 	public final Position pos;
 
-	public HashMap<Integer, Item> reservedProd;
-	public HashMap<Integer, Item> products;
+	public int[] reservedProd;
+	public int[] products;
 }
