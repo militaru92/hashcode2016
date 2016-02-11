@@ -8,6 +8,11 @@ public class Main {
 		
 		ParseInput parser = new ParseInput("test.in");
 		
+		
+		Terrain map(parser);
+		// Analyse terrain
+		//TerrainAnalyser Analyzer = new Analyzer()
+		
 		parser.write();
 
 	}

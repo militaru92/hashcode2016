@@ -9,18 +9,19 @@ public class ParseInput {
 	
 	public ParseInput(String file_name)
 	{
-		product_types_weights = new ArrayList<Integer>();
-		warehouses = new ArrayList<Warehouse>();
-		orders = new ArrayList<Order>();
+		Terrain.product_types_weights = new ArrayList<Integer>();
+		Terrain.warehouses = new ArrayList<Warehouse>();
+		Terrain.orders = new ArrayList<Order>();
+		Terrain.droneCommands = new ArrayList<DroneCom>();
 		try {
 			in = new BufferedReader(new FileReader(file_name));
 			String[] data_overview = in.readLine().split(" ");
 			
-			num_grid_rows = Integer.parseInt(data_overview[0]);
-			num_grid_cols = Integer.parseInt(data_overview[1]);
-			num_drones = Integer.parseInt(data_overview[2]);
-			T = Integer.parseInt(data_overview[3]);
-			max_load = Integer.parseInt(data_overview[4]);
+			Terrain.num_grid_rows = Integer.parseInt(data_overview[0]);
+			Terrain.num_grid_cols = Integer.parseInt(data_overview[1]);
+			Terrain.drones = new ArrayList<Drones>(Integer.parseInt(data_overview[2]));
+			Terrain.max_turns = Integer.parseInt(data_overview[3]);
+			Terrain.max_load = Integer.parseInt(data_overview[4]);
 			
 			String line = in.readLine();
 			
@@ -30,7 +31,7 @@ public class ParseInput {
 			
 			for( int i = 0; i < P; ++i)
 			{
-				product_types_weights.add(Integer.parseInt(data_overview[i])); 
+				Terrain.product_types_weights.add(Integer.parseInt(data_overview[i])); 
 			}
 			
 			line = in.readLine();
@@ -53,7 +54,7 @@ public class ParseInput {
 					warehouse.products.add(Integer.parseInt(data_overview[j]));
 				}
 				
-				warehouses.add(warehouse);
+				Terrain.warehouses.add(warehouse);
 				
 			}
 			
@@ -84,7 +85,7 @@ public class ParseInput {
 					order.products.add(Integer.parseInt(data_overview[j]));
 				}
 				
-				orders.add(order);
+				Terrain.orders.add(order);
 				
 				
 				
@@ -103,9 +104,9 @@ public class ParseInput {
 
 	public void write() {
 		
-		for(int i = 0; i < orders.size(); ++i)
+		for(int i = 0; i < Terrain.orders.size(); ++i)
 		{
-			System.out.println(Integer.toString(orders.get(i).x) + " -- " + Integer.toString(orders.get(i).y));			
+			System.out.println(Integer.toString(Terrain.orders.get(i).x) + " -- " + Integer.toString(Terrain.orders.get(i).y));			
 		}
 	}
 
@@ -119,8 +120,5 @@ public class ParseInput {
 	public int W;
 	public int C;
 	public int max_load;
-	public ArrayList<Integer> product_types_weights;
-	public ArrayList<Warehouse> warehouses;
-	public ArrayList<Order> orders;
 	
 }
