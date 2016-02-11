@@ -19,7 +19,7 @@ public class ParseInput {
 			
 			Terrain.num_grid_rows = Integer.parseInt(data_overview[0]);
 			Terrain.num_grid_cols = Integer.parseInt(data_overview[1]);
-			Terrain.drones = new ArrayList<Drones>(Integer.parseInt(data_overview[2]));
+			Terrain.drones = new ArrayList<Drone>(Integer.parseInt(data_overview[2]));
 			Terrain.max_turns = Integer.parseInt(data_overview[3]);
 			Terrain.max_load = Integer.parseInt(data_overview[4]);
 			

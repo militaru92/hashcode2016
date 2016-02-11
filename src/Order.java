@@ -1,17 +1,17 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 public class Order {
 	
 	public Order()
 	{
-		products = new ArrayList<Integer>();
+		products = new HashMap<Integer, Item>();
 	}
-	
-	
-	public int x;
-	public int y;
-	public int L;
-	public ArrayList<Integer> products;
+	public Position pos;
+	public int L; //number of products
+	public HashMap<Integer, Item> products;
+
 
 }

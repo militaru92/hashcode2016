@@ -1,21 +1,17 @@
-import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class Warehouse {
 	
 	public Warehouse(int x, int y)
 	{
-		this.x = x;
-		this.y = y;
-		
-		products = new ArrayList<Integer>();
-		
-		
+		pos = new Position(x, y);
+		products = new HashMap<Integer, Item> ();
+		reservedProd = new HashMap<Integer, Item> ();
 	}
 	
-	public int x;
-	public int y;
-	
-	public ArrayList<Integer> products;
+	public final Position pos;
 
+	public HashMap<Integer, Item> reservedProd;
+	public HashMap<Integer, Item> products;
 }
